@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!-- 
+	Title : Project Portfoilo
+	Author : JungHo	Lee
+	Date : 30.11.2017
+	Address : Subwaycoder@gmail.com
+-->
+
+<!-- TODO LIST
+	1. 경력 : 화면이 작을 때, 한쪽 정렬
+	2. 코드정리 : css파일 javascript파일 정리후 분할
+	3. github 업로드
+-->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
+<style>
+p {
+	font-family: 'Gloria Hallelujah','Nanum Pen Script', cursive;
+}
+a {
+	font-family: 'Gloria Hallelujah','Nanum Pen Script', cursive;
+}
+header {
+	position: relative;
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
+}
+header img {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+nav ul {
+	position: fixed;
+	top: 0;
+	right: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 30px 8%;
+	Background-color: hsla(0, 0%, 0%, 0);
+	z-index: 1;
+}
+nav li {
+	float: right;
+}
+nav li a {
+	font-weight: bold;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 5px 15px;
+	text-decoration: none;
+}
+nav li a:hover {
+	color: rgb(0, 128, 255);
+}
+body {
+	margin: 0;
+}
+.containerDiv {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0px;
+}
+#aboutDiv {
+	Background-color: rgb(255, 255, 255);
+}
+#skillsDiv {
+	height: 400px;
+	Background-color: rgb(242, 242, 242);
+}
+#careerDiv {
+	height: 1100px;
+	Background-color: rgb(255, 255, 255);
+}
+#projectsDiv {
+	height: 400px;
+	Background-color: rgb(242, 242, 242);
+}
+p.title{
+	margin:0.5em;
+	font-size: 40px;
+}
+
+/* About Me */
+#aboutLastName{
+	font-size: 25px;
+	color: rgb(0, 128, 255);
+	display: inline;
+}
+#aboutFirstName{
+	font-size: 25px;
+	display: inline;
+}
+#aboutDetail{
+	font-size: 20px;
+	color: rgb(153, 163, 164);
+}
+
+/* Skills */
+#skillBackgroundDiv {
+	position: relative;
+    width: 100%;
+}
+.skillListDiv {
+	margin: 20px 0px 20px;
+	Background-color: hsla(0, 0%, 0%, 0);
+	height: 55px;
+	overflow: hidden;
+}
+.skillItemDiv {
+	float:left;
+	Background-color: hsla(0, 0%, 0%, 0);
+	width: 130px;
+	height: 50px;
+	overflow: hidden;
+}
+p.skillItems {
+	font-size: 25px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	overflow: hidden;
+}
+.scoreBarDiv {
+	float:left;
+	overflow: hidden;
+}
+p.skillScores {
+	float:left;
+	font-size: 25px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	left: 10px;
+	overflow: hidden;
+}
+
+/*Career*/
+#careerBackgroundPanel {
+	position: absolute;
+	top: 5%;	
+	left: 10%;
+    width: 80%;
+}
+#careerBackgroundDiv {
+	position: relative;
+	Background-color: red;
+	display: block;
+    margin: auto;
+	width: 800px;
+}
+#centralLine{
+	position: absolute;
+	left: 50%;
+}
+.careerContentBackground{
+	position: absolute;
+	width: 300px;
+	word-wrap: break-word;
+}
+.careerContentBackground:nth-child(even){
+	left: 10%;
+}
+.careerContentBackground:nth-child(even) p{
+	text-align: right;
+}
+.careerContentBackground:nth-child(odd){
+	right: 8%;
+}
+.careerContentBackground:nth-child(odd) p{
+	text-align: left;
+}
+.careerContentBackground *{
+	margin:0;
+	padding:0;
+}
+p.term {
+	font-size: 15px;
+	color: rgb(0, 128, 255);
+}
+p.name {
+	font-size: 30px;
+	line-height:100%
+}
+p.level {
+	font-size: 20px;
+}
+p.comment {
+	font-size: 15px;
+	color: rgb(153, 163, 164);
+}
+</style>
+	<title>Welcome to JungHo Lee's portfolio</title>
+	
+<script>
+
+window.onload = loadCallBack;
+window.onresize = resizeCallBack;
+
+function loadCallBack(){
+	resizeScoreDiv();
+	//resizeCareerDiv();
+}
+
+function resizeCallBack(){
+	resizeScoreDiv();
+	//resizeCareerDiv();
+};
+
+function resizeScoreDiv(){
+	if(window.outerWidth<700){
+		document.getElementById("skillBackgroundDiv").style.left=
+		(window.outerWidth/30-10)+"%";
+	}
+	else{
+		document.getElementById("skillBackgroundDiv").style.left=
+		(window.outerWidth/50)+"%";
+	}
+	
+	document.getElementById("skillBackgroundDiv").style.width=
+	(window.outerWidth*-0.0375)+100+"%";
+}
+
+/* 화면이 작을때, 한쪽 정렬 (구상중)
+function resizeCareerDiv(){
+	if(window.outerWidth<700){
+		var objArr = document.getElementsByClassName("careerContentBackground");
+		for(i=0;i<objArr.length;i++){
+			if(i%2==0)continue;
+			objArr[i].style.left='auto';
+			objArr[i].style.right='8%';
+			objArr[i].style.textAlign='left';
+		}
+	}
+	else{
+		var objArr = document.getElementsByClassName("careerContentBackground");
+		for(i=0;i<objArr.length;i++){
+			if(i%2==0)continue;
+			objArr[i].style.left='10%';
+			objArr[i].style.right='auto';
+			objArr[i].style.textAlign='left';
+		}
+	}
+}*/
+
+</script>
+</head>
+<body>
+<header>
+<img src="frontdoor.jpg" alt="Image of roof">
+<script>	
+var skillDatas = [
+	{item:"java",score:90},
+	{item:"html/css",score:70},
+	{item:"javaScript",score:60},
+	{item:"linux",score:70}
+]
+
+var careerDatas = [
+	{term:"2011-2013",name:"대한민국 육군",level:"병장",comment:"만기 전역"},
+	{term:"2015",name:"2015 청년 취업 아카데미 수료",level:"학생",comment:"롯데 정보통신, 고용노동부 주관 java,웹,빅데이터 교육(4개월)을 수료하였습니다."},
+	{term:"2016",name:"한성대학교 정보시스템공학과",level:"학생",comment:"졸업"},
+	{term:"2016 - 2017",name:"Exem",level:"사원",comment:"데이터베이스 성능관리 솔루션 업체 Exem에서 intermax제품의 QA로 근무하였습니다. 주로 자동화 테스트 모듈 개발 및 테스트 환경 구성을 하였습니다."},
+	{term:"2017",name:"New Zealand",level:"학생",comment:"working holiday"}
+]
+</script>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="#projectsDiv">projects</a></li>
+		<li><a href="#skillsDiv">skills</a></li>
+		<li><a href="#careerDiv">career</a></li>
+		<li><a href="#aboutDiv">about</a></li>
+	</ul>
+</nav>
+
+<section>
+	<div id="aboutDiv" class="containerDiv">
+		<p class="title">About Me</p>
+		<img src="self.jpg" alt="host thumbnail">
+		<p id="aboutLastName"><br>Jungho </p>
+		<p id="aboutFirstName">Lee</p>
+		<p id="aboutDetail">Hello, It's Jungho Lee. welcome to my portfolio. :D</p>
+		<p id="aboutDetail">안녕하세요. 일류 웹개발자를 꿈꾸는 이정호입니다.<br>찾아와주셔서 감사합니다.</p>
+	</div>
+	<div id="skillsDiv" class="containerDiv">
+		<p class="title">Skills</p>
+		
+		<div id="skillBackgroundDiv">
+		<script>
+			for(i = 0; i < skillDatas.length; i++){
+			var str =
+				'<div class="skillListDiv">'+
+					'<div class="skillItemDiv">'+
+						'<p class="skillItems">'+skillDatas[i].item+'</p>'+
+					'</div>'+
+					'<div class="scoreBarDiv" style="width:'+skillDatas[i].score*0.7+'%;">'+
+						'<svg id="scoreBarSvg" width="100%" height="35" style="overflow: hidden">'+
+							'<rect y="15" width="100%" height="20" style="fill:rgb(0, 128, 255);"/>'+
+						'</svg>'+
+					'</div>'+
+					'<div class="score">'+
+						'<p class="skillScores">'+skillDatas[i].score+'</p>'+
+					'</div>'+
+				'</div>';
+			document.getElementById("skillBackgroundDiv").insertAdjacentHTML('beforeend',str);
+			}
+		</script>
+		</div>
+	</div>
+	<div id="careerDiv" class="containerDiv">
+		<p class="title">Career</p>
+		<div id="careerBackgroundDiv">
+			<script>
+				var str2 = 
+				'<svg id="centralLine" width="15" height="'+(careerDatas.length-1)*200+10+'">' +
+				'<rect x="5" y="10" width="3" height="'+(careerDatas.length-1)*200+'" style="fill:rgb(0, 128, 255);"/>';
+				for(i=0; i<careerDatas.length; i++){
+					str2 += '<circle cx="6" cy="'+(i*200+16)+'" r="6" style="fill:rgb(0, 128, 255)" />';
+				}
+				str2 += '</svg>';
+				
+				for(i=0; i<careerDatas.length; i++){
+				str2 += '<div class="careerContentBackground" style="top:'+i*200+'px">' +
+					'<p class="term">'+careerDatas[i].term+'</p>' +
+					'<p class="name">'+careerDatas[i].name+'</p>' +
+					'<p class="level">'+careerDatas[i].level+'</p>' +
+					'<p class="comment">'+careerDatas[i].comment+'</p>' +
+					'</div>';
+				}
+				document.getElementById("careerBackgroundDiv").insertAdjacentHTML('beforeend',str2);
+			</script>
+		</div>
+	</div>
+	<div id="projectsDiv" class="containerDiv">
+		<p class="title">Projects</p>
+	</div>
+</section>
+</body>
+</html>
