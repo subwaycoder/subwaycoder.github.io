@@ -7,9 +7,9 @@
 -->
 
 <!-- TODO LIST
-	1. °æ·Â : È­¸éÀÌ ÀÛÀ» ¶§, ÇÑÂÊ Á¤·Ä
-	2. ÄÚµåÁ¤¸® : cssÆÄÀÏ javascriptÆÄÀÏ Á¤¸®ÈÄ ºÐÇÒ
-	3. github ¾÷·Îµå 
+	1. ê²½ë ¥ : í™”ë©´ì´ ìž‘ì„ ë•Œ, í•œìª½ ì •ë ¬
+	2. ì½”ë“œì •ë¦¬ : cssíŒŒì¼ javascriptíŒŒì¼ ì •ë¦¬í›„ ë¶„í• 
+	3. github ì—…ë¡œë“œ 
 -->
 <html>
 <head>
@@ -230,7 +230,7 @@ function resizeScoreDiv(){
 	(window.outerWidth*-0.0375)+100+"%";
 }
 
-/* È­¸éÀÌ ÀÛÀ»¶§, ÇÑÂÊ Á¤·Ä (±¸»óÁß)
+/* í™”ë©´ì´ ìž‘ì„ë•Œ, í•œìª½ ì •ë ¬ (êµ¬ìƒì¤‘)
 function resizeCareerDiv(){
 	if(window.outerWidth<700){
 		var objArr = document.getElementsByClassName("careerContentBackground");
@@ -266,11 +266,11 @@ var skillDatas = [
 ]
 
 var careerDatas = [
-	{term:"2011-2013",name:"´ëÇÑ¹Î±¹ À°±º",level:"º´Àå",comment:"¸¸±â Àü¿ª"},
-	{term:"2015",name:"2015 Ã»³â Ãë¾÷ ¾ÆÄ«µ¥¹Ì ¼ö·á",level:"ÇÐ»ý",comment:"·Ôµ¥ Á¤º¸Åë½Å, °í¿ë³ëµ¿ºÎ ÁÖ°ü java,À¥,ºòµ¥ÀÌÅÍ ±³À°(4°³¿ù)À» ¼ö·áÇÏ¿´½À´Ï´Ù."},
-	{term:"2016",name:"ÇÑ¼º´ëÇÐ±³ Á¤º¸½Ã½ºÅÛ°øÇÐ°ú",level:"ÇÐ»ý",comment:"Á¹¾÷"},
-	{term:"2016 - 2017",name:"Exem",level:"»ç¿ø",comment:"µ¥ÀÌÅÍº£ÀÌ½º ¼º´É°ü¸® ¼Ö·ç¼Ç ¾÷Ã¼ Exem¿¡¼­ intermaxÁ¦Ç°ÀÇ QA·Î ±Ù¹«ÇÏ¿´½À´Ï´Ù. ÁÖ·Î ÀÚµ¿È­ Å×½ºÆ® ¸ðµâ °³¹ß ¹× Å×½ºÆ® È¯°æ ±¸¼ºÀ» ÇÏ¿´½À´Ï´Ù."},
-	{term:"2017",name:"New Zealand",level:"ÇÐ»ý",comment:"working holiday"}
+	{term:"2011-2013",name:"ëŒ€í•œë¯¼êµ­ ìœ¡êµ°",level:"ë³‘ìž¥",comment:"ë§Œê¸° ì „ì—­"},
+	{term:"2015",name:"2015 ì²­ë…„ ì·¨ì—… ì•„ì¹´ë°ë¯¸ ìˆ˜ë£Œ",level:"í•™ìƒ",comment:"ë¡¯ë° ì •ë³´í†µì‹ , ê³ ìš©ë…¸ë™ë¶€ ì£¼ê´€ java,ì›¹,ë¹…ë°ì´í„° êµìœ¡(4ê°œì›”)ì„ ìˆ˜ë£Œí•˜ì˜€ìŠµë‹ˆë‹¤."},
+	{term:"2016",name:"í•œì„±ëŒ€í•™êµ ì •ë³´ì‹œìŠ¤í…œê³µí•™ê³¼",level:"í•™ìƒ",comment:"ì¡¸ì—…"},
+	{term:"2016 - 2017",name:"Exem",level:"ì‚¬ì›",comment:"ë°ì´í„°ë² ì´ìŠ¤ ì„±ëŠ¥ê´€ë¦¬ ì†”ë£¨ì…˜ ì—…ì²´ Exemì—ì„œ intermaxì œí’ˆì˜ QAë¡œ ê·¼ë¬´í•˜ì˜€ìŠµë‹ˆë‹¤. ì£¼ë¡œ ìžë™í™” í…ŒìŠ¤íŠ¸ ëª¨ë“ˆ ê°œë°œ ë° í…ŒìŠ¤íŠ¸ í™˜ê²½ êµ¬ì„±ì„ í•˜ì˜€ìŠµë‹ˆë‹¤."},
+	{term:"2017",name:"New Zealand",level:"í•™ìƒ",comment:"working holiday"}
 ]
 </script>
 </header>
@@ -291,7 +291,7 @@ var careerDatas = [
 		<p id="aboutLastName"><br>Jungho </p>
 		<p id="aboutFirstName">Lee</p>
 		<p id="aboutDetail">Hello, It's Jungho Lee. welcome to my portfolio. :D</p>
-		<p id="aboutDetail">¾È³çÇÏ¼¼¿ä. ÀÏ·ù À¥°³¹ßÀÚ¸¦ ²Þ²Ù´Â ÀÌÁ¤È£ÀÔ´Ï´Ù.<br>Ã£¾Æ¿ÍÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.</p>
+		<p id="aboutDetail">ì•ˆë…•í•˜ì„¸ìš”. ì¼ë¥˜ ì›¹ê°œë°œìžë¥¼ ê¿ˆê¾¸ëŠ” ì´ì •í˜¸ìž…ë‹ˆë‹¤.<br>ì°¾ì•„ì™€ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.</p>
 	</div>
 	<div id="skillsDiv" class="containerDiv">
 		<p class="title">Skills</p>
