@@ -7,22 +7,21 @@
 -->
 
 <!-- TODO LIST
-	1. 경력 : 화면이 작을 때, 한쪽 정렬
-	2. 코드정리 : css파일 javascript파일 정리후 분할
-	3. github 업로드 
+	1. 코드정리 : css파일 javascript파일 정리후 분할
 -->
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta careerName="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
-<link href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" rel="stylesheet">
 <style>
 p {
 	font-family: 'Gloria Hallelujah','Nanum Pen Script', cursive;
+	src: url('/NanumPen.ttf');
 }
 a {
 	font-family: 'Gloria Hallelujah','Nanum Pen Script', cursive;
+	src: url('/NanumPen.ttf');
 }
 header {
 	position: relative;
@@ -43,7 +42,7 @@ nav ul {
 	right: 0;
 	list-style-type: none;
 	margin: 0;
-	padding: 30px 8%;
+	padding: 30px 8% 0 0;
 	Background-color: hsla(0, 0%, 0%, 0);
 	z-index: 1;
 }
@@ -74,11 +73,10 @@ body {
 	Background-color: rgb(255, 255, 255);
 }
 #skillsDiv {
-	height: 400px;
+	height: auto;
 	Background-color: rgb(242, 242, 242);
 }
 #careerDiv {
-	height: 1100px;
 	Background-color: rgb(255, 255, 255);
 }
 #projectsDiv {
@@ -91,6 +89,31 @@ p.title{
 }
 
 /* About Me */
+
+.placeholder {
+    margin-right: auto;
+    margin-left:auto;
+	top: 30px;
+    width: 180px;
+    height: 210px;
+    position: relative;
+}
+.bg-image-blur, .bg-image {
+    background-image: url('self.jpg');
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.bg-image-blur {
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(25px);
+}
+
 #aboutLastName{
 	font-size: 25px;
 	color: rgb(0, 128, 255);
@@ -144,7 +167,7 @@ p.skillScores {
 	overflow: hidden;
 }
 
-/*Career*/
+/* Career */
 #careerBackgroundPanel {
 	position: absolute;
 	top: 5%;	
@@ -183,20 +206,30 @@ p.skillScores {
 	margin:0;
 	padding:0;
 }
-p.term {
+p.careerTerm {
 	font-size: 15px;
 	color: rgb(0, 128, 255);
 }
-p.name {
+p.careerName {
 	font-size: 30px;
 	line-height:100%
 }
-p.level {
+p.careerLevel {
 	font-size: 20px;
 }
-p.comment {
+p.careerComment {
 	font-size: 15px;
 	color: rgb(153, 163, 164);
+}
+
+/* Project */
+#projectTitle {
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
+}
+#projectComment {
+	
 }
 </style>
 	<title>Welcome to JungHo Lee's portfolio</title>
@@ -208,49 +241,87 @@ window.onresize = resizeCallBack;
 
 function loadCallBack(){
 	resizeScoreDiv();
-	//resizeCareerDiv();
+	resizeCareerDiv();
 }
 
 function resizeCallBack(){
 	resizeScoreDiv();
-	//resizeCareerDiv();
+	resizeCareerDiv();
 };
 
 function resizeScoreDiv(){
-	if(window.outerWidth<700){
+	if(window.outerWidth<1000){
 		document.getElementById("skillBackgroundDiv").style.left=
 		(window.outerWidth/30-10)+"%";
+		
+		var scoreBars = document.getElementsByClassName("scoreBarDiv");
+		for(i=0;i<skillDatas.length;i++){
+			scoreBars[i].style.width = skillDatas[i].score*0.5+"%";
+		}
 	}
 	else{
 		document.getElementById("skillBackgroundDiv").style.left=
 		(window.outerWidth/50)+"%";
+		
+		var scoreBars = document.getElementsByClassName("scoreBarDiv");
+		for(i=0;i<skillDatas.length;i++){
+			scoreBars[i].style.width = skillDatas[i].score*0.7+"%";
+		}
 	}
 	
 	document.getElementById("skillBackgroundDiv").style.width=
 	(window.outerWidth*-0.0375)+100+"%";
 }
 
-/* 화면이 작을때, 한쪽 정렬 (구상중)
+/* 화면이 작을때, 한쪽 정렬 */
 function resizeCareerDiv(){
-	if(window.outerWidth<700){
+	if(window.outerWidth<1000){
 		var objArr = document.getElementsByClassName("careerContentBackground");
+		//배경 패널 크기 재조정
+		document.getElementById("careerBackgroundDiv").style.width=(window.outerWidth-35)+"px";
+		//중앙선 위치 재조정
+		document.getElementById("centralLine").style.left=
+		(window.outerWidth/30-10)+"%";
+		
 		for(i=0;i<objArr.length;i++){
-			if(i%2==0)continue;
-			objArr[i].style.left='auto';
-			objArr[i].style.right='8%';
-			objArr[i].style.textAlign='left';
-		}
+		//항목 위치 재조정
+			objArr[i].style.left=(window.outerWidth/30-5)+"%";
+			
+		//세부 항목 왼쪽정렬
+			if(i%2==0)continue;		
+			var childs = objArr[i].children;
+			for(j=0;j<childs.length;j++){
+				childs[j].style.textAlign='left';
+			}	
+		}	
 	}
 	else{
 		var objArr = document.getElementsByClassName("careerContentBackground");
+		//배경 패널 크기 재조정
+		document.getElementById("careerBackgroundDiv").style.width="800px";
+		//중앙선 위치 재조정
+		document.getElementById("centralLine").style.left="50%";
+		
 		for(i=0;i<objArr.length;i++){
-			if(i%2==0)continue;
-			objArr[i].style.left='10%';
-			objArr[i].style.right='auto';
-			objArr[i].style.textAlign='left';
-		}
+		//항목 위치 재조정
+			if(i%2==0){
+				objArr[i].style.left='auto';
+				objArr[i].style.right='8%';
+			}
+			else{
+				objArr[i].style.left='10%';
+				objArr[i].style.right='auto';
+			}
+			
+		//세부 항목 오른쪽정렬
+			if(i%2==0)continue;		
+			var childs = objArr[i].children;
+			for(j=0;j<childs.length;j++){
+				childs[j].style.textAlign='right';
+			}	
+		}	
 	}
-}*/
+}
 
 </script>
 </head>
@@ -260,17 +331,19 @@ function resizeCareerDiv(){
 <script>	
 var skillDatas = [
 	{item:"java",score:90},
-	{item:"html/css",score:70},
-	{item:"javaScript",score:60},
-	{item:"linux",score:70}
+	{item:"html/css",score:80},
+	{item:"javaScript",score:70},
+	{item:"linux",score:70},
+	{item:"SQL",score:60},
+	{item:"c",score:60}
 ]
 
 var careerDatas = [
-	{term:"2011-2013",name:"대한민국 육군",level:"병장",comment:"만기 전역"},
-	{term:"2015",name:"2015 청년 취업 아카데미 수료",level:"학생",comment:"롯데 정보통신, 고용노동부 주관 java,웹,빅데이터 교육(4개월)을 수료하였습니다."},
-	{term:"2016",name:"한성대학교 정보시스템공학과",level:"학생",comment:"졸업"},
-	{term:"2016 - 2017",name:"Exem",level:"사원",comment:"데이터베이스 성능관리 솔루션 업체 Exem에서 intermax제품의 QA로 근무하였습니다. 주로 자동화 테스트 모듈 개발 및 테스트 환경 구성을 하였습니다."},
-	{term:"2017",name:"New Zealand",level:"학생",comment:"working holiday"}
+	{careerTerm:"2011-2013",careerName:"대한민국 육군",careerLevel:"병장",careerComment:"만기 전역"},
+	{careerTerm:"2015",careerName:"2015 청년 취업 아카데미 수료",careerLevel:"학생",careerComment:"롯데 정보통신, 고용노동부 주관 java,웹,빅데이터 교육(4개월)을 수료하였습니다."},
+	{careerTerm:"2016",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"졸업"},
+	{careerTerm:"2016 - 2017",careerName:"Exem",careerLevel:"사원",careerComment:'데이터베이스 성능관리 솔루션 업체 <a href="http://www.ex-em.com/">Exem</a>에서 intermax제품의 QA로 근무하였습니다. 주로 자동화 테스트 모듈 개발 및 테스트 환경 구성을 하였습니다.'},
+	{careerTerm:"2017",careerName:"New Zealand",careerLevel:"학생",careerComment:"working holiday"}
 ]
 </script>
 </header>
@@ -287,12 +360,20 @@ var careerDatas = [
 <section>
 	<div id="aboutDiv" class="containerDiv">
 		<p class="title">About Me</p>
-		<img src="self.jpg" alt="host thumbnail">
+		<div class="placeholder">
+			<!-- blurred background image for blurred edge -->
+			<div class="bg-image-blur"></div>
+			<!-- same image, no blur -->
+			<div class="bg-image"></div>
+			<!-- content -->
+		</div>
+		<!--<img src="self.jpg" alt="host thumbnail">-->
 		<p id="aboutLastName"><br>Jungho </p>
 		<p id="aboutFirstName">Lee</p>
 		<p id="aboutDetail">Hello, It's Jungho Lee. welcome to my portfolio. :D</p>
 		<p id="aboutDetail">안녕하세요. 일류 웹개발자를 꿈꾸는 이정호입니다.<br>찾아와주셔서 감사합니다.</p>
 	</div>
+	
 	<div id="skillsDiv" class="containerDiv">
 		<p class="title">Skills</p>
 		
@@ -322,8 +403,9 @@ var careerDatas = [
 		<p class="title">Career</p>
 		<div id="careerBackgroundDiv">
 			<script>
+			document.getElementById("careerDiv").style.height = (careerDatas.length+1)*200+"px";
 				var str2 = 
-				'<svg id="centralLine" width="15" height="'+(careerDatas.length-1)*200+10+'">' +
+				'<svg id="centralLine" width="15" height="'+careerDatas.length*200+'">' +
 				'<rect x="5" y="10" width="3" height="'+(careerDatas.length-1)*200+'" style="fill:rgb(0, 128, 255);"/>';
 				for(i=0; i<careerDatas.length; i++){
 					str2 += '<circle cx="6" cy="'+(i*200+16)+'" r="6" style="fill:rgb(0, 128, 255)" />';
@@ -332,10 +414,10 @@ var careerDatas = [
 				
 				for(i=0; i<careerDatas.length; i++){
 				str2 += '<div class="careerContentBackground" style="top:'+i*200+'px">' +
-					'<p class="term">'+careerDatas[i].term+'</p>' +
-					'<p class="name">'+careerDatas[i].name+'</p>' +
-					'<p class="level">'+careerDatas[i].level+'</p>' +
-					'<p class="comment">'+careerDatas[i].comment+'</p>' +
+					'<p class="careerTerm">'+careerDatas[i].careerTerm+'</p>' +
+					'<p class="careerName">'+careerDatas[i].careerName+'</p>' +
+					'<p class="careerLevel">'+careerDatas[i].careerLevel+'</p>' +
+					'<p class="careerComment">'+careerDatas[i].careerComment+'</p>' +
 					'</div>';
 				}
 				document.getElementById("careerBackgroundDiv").insertAdjacentHTML('beforeend',str2);
@@ -344,6 +426,11 @@ var careerDatas = [
 	</div>
 	<div id="projectsDiv" class="containerDiv">
 		<p class="title">Projects</p>
+		<image src="js.jpg" alt="javascript">
+		<a  href="https://github.com/subwaycoder/subwaycoder.github.io">
+			<p id="projectTitle">Project portfolio</p>
+		</a>
+		<p id="projectComment">Javascript와 github Page를 이용한 정적 웹페이지 프로젝트 portfolio 입니다.<br>주요 개발기간은 2017.11.30 ~ 2017.12.04 이며, 모든 코드는 직접 작성하였습니다.</p>
 	</div>
 </section>
 </body>
