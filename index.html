@@ -272,6 +272,9 @@ function resizeScoreDiv(){
 	
 	document.getElementById("skillBackgroundDiv").style.width=
 	(window.outerWidth*-0.0375)+100+"%";
+	
+	alert("window.outerWidth = "+window.outerWidth);
+	alert((window.outerWidth*-0.0375)+100);
 }
 
 //Career 영역을 화면 크기에 따라 다르게 동작하게 함
@@ -339,9 +342,8 @@ var skillDatas = [
 ]
 
 var careerDatas = [
-	{careerTerm:"2011-2013",careerName:"대한민국 육군",careerLevel:"병장",careerComment:"만기 전역 : 국가의 안녕을 위해 21개월간 헌신하였습니다."},
-	{careerTerm:"2014",careerName:"League of Legend",careerLevel:"<br>",careerComment:'게임을 열심히 해서 한국 서버에서 상위 0.01%를 달성하였습니다. 당시 최고의 탑라이너였던 <a href="https://www.youtube.com/watch?v=ebvYp0KfVEY">Looper선수를 잡아낸적이 있습니다.</a>'},
-	{careerTerm:"2015",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"졸업 프로젝트 : 컴퓨터를 통한 안드로이드 스마트폰의 원격 조종 프로그램을 만들었습니다. 팀원없이 1인 프로젝트로 진행하였습니다."},
+	{careerTerm:"2011-2013",careerName:"대한민국 육군",careerLevel:"병장",careerComment:"만기 전역<br>국가와 공동체를 위해 21개월간 헌신하였습니다."},
+	{careerTerm:"2015",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment: '졸업 프로젝트<br>컴퓨터를 통한 안드로이드 스마트폰의 원격 조종 프로그램을 만들었습니다. <a href="youtu.be/X6XDZx-NqJo">영상</a>'},
 	{careerTerm:"2015",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"성적 장학금 수료 : 4학년 1학기, 4.33의 학점으로 1등을 하였습니다. 성적 장학금을 받았습니다."},
 	{careerTerm:"2015",careerName:"2015 청년 취업 아카데미",careerLevel:"학생",careerComment:"롯데 정보통신, 고용노동부 주관 java,html,css,javascript,servlet/jsp,spring,빅데이터 교육(약 5개월 과정)을 수료하였습니다."},
 	{careerTerm:"2016 - 2017",careerName:"Exem",careerLevel:"사원",careerComment:'데이터베이스 성능관리 솔루션 업체 <a href="http://www.ex-em.com/">Exem</a>에서 intermax제품의 QA로 근무하였습니다. 주로 자동화 테스트 모듈 개발 및 테스트 환경 구성을 하였습니다.'},
