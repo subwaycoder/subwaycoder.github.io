@@ -252,9 +252,9 @@ function resizeCallBack(){
 };
 //Score 영역을 화면 크기에 따라 다르게 동작하게 함
 function resizeScoreDiv(){
-	if(window.outerWidth<1000){
+	if(window.innerWidth<1000){
 		document.getElementById("skillBackgroundDiv").style.left=
-		(window.outerWidth/30-10)+"%";
+		(window.innerWidth/30-10)+"%";
 
 		var scoreBars = document.getElementsByClassName("scoreBarDiv");
 		for(i=0;i<skillDatas.length;i++){
@@ -263,7 +263,7 @@ function resizeScoreDiv(){
 	}
 	else{
 		document.getElementById("skillBackgroundDiv").style.left=
-		(window.outerWidth/50)+"%";
+		(window.innerWidth/50)+"%";
 		
 		var scoreBars = document.getElementsByClassName("scoreBarDiv");
 		for(i=0;i<skillDatas.length;i++){
@@ -272,11 +272,11 @@ function resizeScoreDiv(){
 	}
 	
 	document.getElementById("skillBackgroundDiv").style.width=
-	(window.outerWidth*-0.0375)+100+"%";
+	(window.innerWidth*-0.0375)+100+"%";
 	
 	
-	alert('window.outerWidth = '+window.outerWidth+
-	'\\\nwindow.outerHeight = '+window.outerHeight+
+	alert('window.innerWidth = '+window.innerWidth+
+	'\\\nwindow.innerHeight = '+window.innerHeight+
 	
 	'\\\nwindow.innerWidth = '+window.innerWidth+
 	'\\\nwindow.innerHeight = '+window.innerHeight+
@@ -292,16 +292,16 @@ function resizeScoreDiv(){
 //Career 영역을 화면 크기에 따라 다르게 동작하게 함
 function resizeCareerDiv(){
 	var objArr = document.getElementsByClassName("careerContentBackground");
-	if(window.outerWidth<1000){
+	if(window.innerWidth<1000){
 		//배경 패널 크기 재조정
-		document.getElementById("careerBackgroundDiv").style.width=(window.outerWidth-35)+"px";
+		document.getElementById("careerBackgroundDiv").style.width=(window.innerWidth-35)+"px";
 		//중앙선 위치 재조정
 		document.getElementById("centralLine").style.left=
-		(window.outerWidth/30-10)+"%";
+		(window.innerWidth/30-10)+"%";
 		
 		for(i=0;i<objArr.length;i++){
 			//항목 위치 재조정
-			objArr[i].style.left=(window.outerWidth/30-5)+"%";
+			objArr[i].style.left=(window.innerWidth/30-5)+"%";
 				
 			//세부 항목 왼쪽정렬
 			if(i%2==0)continue;		
@@ -393,7 +393,6 @@ var careerDatas = [
 		<p class="title">Skills</p>
 		
 		<div id="skillBackgroundDiv">
-		<p>1111</p>
 		<script>
 			for(i = 0; i < skillDatas.length; i++){
 			var str =
