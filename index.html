@@ -23,6 +23,9 @@ a {
 	font-family: 'Gloria Hallelujah','Nanum Pen Script', cursive;
 	src: url('/NanumPen.ttf');
 }
+body {
+	margin: 0;
+}
 header {
 	position: relative;
 	width: 100%;
@@ -36,6 +39,7 @@ header img {
 	left: 50%;
 	transform: translateX(-50%);
 }
+/****************************** navigator ******************************/
 nav ul {
 	position: fixed;
 	top: 0;
@@ -60,22 +64,19 @@ nav li a {
 nav li a:hover {
 	color: rgb(0, 128, 255);
 }
-body {
-	margin: 0;
-}
+
 .containerDiv {
 	position: relative;
 	width: 100%;
 	text-align: center;
 	padding: 10px 0px;
 }
-#aboutDiv {
-	Background-color: rgb(255, 255, 255);
+p.title{
+	margin:0.5em;
+	font-size: 40px;
 }
-#skillsDiv {
-	height: auto;
-	Background-color: rgb(242, 242, 242);
-}
+
+
 #careerDiv {
 	Background-color: rgb(255, 255, 255);
 }
@@ -83,13 +84,12 @@ body {
 	height: 400px;
 	Background-color: rgb(242, 242, 242);
 }
-p.title{
-	margin:0.5em;
-	font-size: 40px;
+/****************************** About Me ******************************/
+#aboutDiv {
+	Background-color: rgb(255, 255, 255);
 }
 
-/* About Me */
-
+/* css to blur image*/
 .placeholder {
     margin-right: auto;
     margin-left:auto;
@@ -128,7 +128,11 @@ p.title{
 	color: rgb(153, 163, 164);
 }
 
-/* Skills */
+/****************************** Skills ******************************/
+#skillsDiv {
+	height: auto;
+	Background-color: rgb(242, 242, 242);
+}
 #skillBackgroundDiv {
 	position: relative;
     width: 100%;
@@ -167,7 +171,7 @@ p.skillScores {
 	overflow: hidden;
 }
 
-/* Career */
+/****************************** Career ******************************/
 #careerBackgroundPanel {
 	position: absolute;
 	top: 5%;	
@@ -222,7 +226,7 @@ p.careerComment {
 	color: rgb(153, 163, 164);
 }
 
-/* Project */
+/****************************** Project ******************************/
 #projectTitle {
 	font-size: 20px;
 	margin: 0;
@@ -232,28 +236,24 @@ p.careerComment {
 	
 }
 </style>
-	<title>Welcome to JungHo Lee's portfolio</title>
-	
+<title>JungHo Lee</title>
 <script>
-
 window.onload = loadCallBack;
 window.onresize = resizeCallBack;
-
 function loadCallBack(){
 	resizeScoreDiv();
 	resizeCareerDiv();
 }
-
 function resizeCallBack(){
 	resizeScoreDiv();
 	resizeCareerDiv();
 };
-
+//Score 영역을 화면 크기에 따라 다르게 동작하게 함
 function resizeScoreDiv(){
 	if(window.outerWidth<1000){
 		document.getElementById("skillBackgroundDiv").style.left=
 		(window.outerWidth/30-10)+"%";
-		
+
 		var scoreBars = document.getElementsByClassName("scoreBarDiv");
 		for(i=0;i<skillDatas.length;i++){
 			scoreBars[i].style.width = skillDatas[i].score*0.5+"%";
@@ -273,10 +273,10 @@ function resizeScoreDiv(){
 	(window.outerWidth*-0.0375)+100+"%";
 }
 
-/* 화면이 작을때, 한쪽 정렬 */
+//Career 영역을 화면 크기에 따라 다르게 동작하게 함
 function resizeCareerDiv(){
+	var objArr = document.getElementsByClassName("careerContentBackground");
 	if(window.outerWidth<1000){
-		var objArr = document.getElementsByClassName("careerContentBackground");
 		//배경 패널 크기 재조정
 		document.getElementById("careerBackgroundDiv").style.width=(window.outerWidth-35)+"px";
 		//중앙선 위치 재조정
@@ -284,10 +284,10 @@ function resizeCareerDiv(){
 		(window.outerWidth/30-10)+"%";
 		
 		for(i=0;i<objArr.length;i++){
-		//항목 위치 재조정
+			//항목 위치 재조정
 			objArr[i].style.left=(window.outerWidth/30-5)+"%";
-			
-		//세부 항목 왼쪽정렬
+				
+			//세부 항목 왼쪽정렬
 			if(i%2==0)continue;		
 			var childs = objArr[i].children;
 			for(j=0;j<childs.length;j++){
@@ -296,14 +296,13 @@ function resizeCareerDiv(){
 		}	
 	}
 	else{
-		var objArr = document.getElementsByClassName("careerContentBackground");
 		//배경 패널 크기 재조정
 		document.getElementById("careerBackgroundDiv").style.width="800px";
 		//중앙선 위치 재조정
 		document.getElementById("centralLine").style.left="50%";
 		
 		for(i=0;i<objArr.length;i++){
-		//항목 위치 재조정
+			//항목 위치 재조정
 			if(i%2==0){
 				objArr[i].style.left='auto';
 				objArr[i].style.right='8%';
@@ -313,7 +312,7 @@ function resizeCareerDiv(){
 				objArr[i].style.right='auto';
 			}
 			
-		//세부 항목 오른쪽정렬
+			//세부 항목 오른쪽정렬
 			if(i%2==0)continue;		
 			var childs = objArr[i].children;
 			for(j=0;j<childs.length;j++){
@@ -330,20 +329,22 @@ function resizeCareerDiv(){
 <img src="frontdoor.jpg" alt="Image of roof">
 <script>	
 var skillDatas = [
-	{item:"java",score:90},
-	{item:"html/css",score:80},
-	{item:"javaScript",score:70},
-	{item:"linux",score:70},
+	{item:"Java",score:90},
+	{item:"Html/Css",score:80},
+	{item:"Javascript",score:70},
+	{item:"Linux",score:70},
 	{item:"SQL",score:60},
-	{item:"c",score:60}
+	{item:"Android",score:40}
 ]
 
 var careerDatas = [
-	{careerTerm:"2011-2013",careerName:"대한민국 육군",careerLevel:"병장",careerComment:"만기 전역"},
-	{careerTerm:"2015",careerName:"2015 청년 취업 아카데미 수료",careerLevel:"학생",careerComment:"롯데 정보통신, 고용노동부 주관 java,웹,빅데이터 교육(4개월)을 수료하였습니다."},
-	{careerTerm:"2016",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"졸업"},
+	{careerTerm:"2011-2013",careerName:"대한민국 육군",careerLevel:"병장",careerComment:"만기 전역 : 국가의 안녕을 위해 21개월간 헌신하였습니다."},
+	{careerTerm:"2014",careerName:"League of Legend",careerLevel:"<br>",careerComment:'게임을 열심히 해서 한국 서버에서 상위 0.01%를 달성하였습니다. 당시 최고의 탑라이너였던 <a href="https://www.youtube.com/watch?v=ebvYp0KfVEY">Looper선수를 잡아낸적이 있습니다.</a>'},
+	{careerTerm:"2015",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"졸업 프로젝트 : 컴퓨터를 통한 안드로이드 스마트폰의 원격 조종 프로그램을 만들었습니다. 팀원없이 1인 프로젝트로 진행하였습니다."},
+	{careerTerm:"2015",careerName:"한성대학교 정보시스템공학과",careerLevel:"학생",careerComment:"성적 장학금 수료 : 4학년 1학기, 4.33의 학점으로 1등을 하였습니다. 성적 장학금을 받았습니다."},
+	{careerTerm:"2015",careerName:"2015 청년 취업 아카데미",careerLevel:"학생",careerComment:"롯데 정보통신, 고용노동부 주관 java,웹,빅데이터 교육(약 5개월 과정)을 수료하였습니다. 과정중에 학교 종합 정보시스템에서 강의 정보를 받아와서 DB에 저장하는 웹 프로젝트를 진행한 적이 있습니다."},
 	{careerTerm:"2016 - 2017",careerName:"Exem",careerLevel:"사원",careerComment:'데이터베이스 성능관리 솔루션 업체 <a href="http://www.ex-em.com/">Exem</a>에서 intermax제품의 QA로 근무하였습니다. 주로 자동화 테스트 모듈 개발 및 테스트 환경 구성을 하였습니다.'},
-	{careerTerm:"2017",careerName:"New Zealand",careerLevel:"학생",careerComment:"working holiday"}
+	{careerTerm:"2017",careerName:"New Zealand",careerLevel:"학생",careerComment:"Working Holiday를 떠나서 현지 가정에서 홈스테이하며 영어를 공부하는 시간을 가졌습니다."}
 ]
 </script>
 </header>
@@ -365,9 +366,8 @@ var careerDatas = [
 			<div class="bg-image-blur"></div>
 			<!-- same image, no blur -->
 			<div class="bg-image"></div>
-			<!-- content -->
 		</div>
-		<!--<img src="self.jpg" alt="host thumbnail">-->
+		
 		<p id="aboutLastName"><br>Jungho </p>
 		<p id="aboutFirstName">Lee</p>
 		<p id="aboutDetail">Hello, It's Jungho Lee. welcome to my portfolio. :D</p>
@@ -400,7 +400,7 @@ var careerDatas = [
 		</div>
 	</div>
 	<div id="careerDiv" class="containerDiv">
-		<p class="title">Career</p>
+		<p class="title">What did you do?</p>
 		<div id="careerBackgroundDiv">
 			<script>
 			document.getElementById("careerDiv").style.height = (careerDatas.length+1)*200+"px";
